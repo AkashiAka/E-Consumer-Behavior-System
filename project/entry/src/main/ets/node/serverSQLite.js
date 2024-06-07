@@ -185,6 +185,20 @@ app.post('/login', async (req, res) => {
     }
 });
 
+// 调用Python脚本的API端点
+app.get('/analyze', (req, res) => {
+    exec('python 任务3.py', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`exec error: ${error}`);
+            return res.status(500).json({ message: 'Error executing Python script', error: stderr });
+        }
+
+        // 将Python脚本的输出结果解析为JSON对象并返回给客户端
+        const result = JSON.parse(stdout); // 假设stdout是一个JSON字符串
+        res.status(200).json({ message: 'Analysis complete', result: result });
+    });
+});
+
 
 // 操作记录相关的API端点
 
