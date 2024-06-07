@@ -13,7 +13,7 @@ struct Index {
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .margin({top:10})
-          Button('账号信息')
+          Button('软件信息')
             .margin({top:10})
             .onClick(()=>{
               router.pushUrl({
