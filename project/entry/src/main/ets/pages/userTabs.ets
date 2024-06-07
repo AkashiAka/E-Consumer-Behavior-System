@@ -8,44 +8,86 @@ struct UserTabs {
   build() {
     Row() {
       Column() {
-        Row(){
+        Row() {
           Text('< 返回')
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
-            .onClick(()=>{
-              router.back({url:"pages/Index"})
+            .onClick(() => {
+              router.back({ url: "pages/Index" })
             })
             .margin({
-              top:'40vp',
-              left:'10vp'
+              top: '40vp',
+              left: '10vp'
             })
         }
         .width('100%')
-        Tabs({barPosition:BarPosition.End,controller:this.controller}){
-          TabContent(){
+
+        Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
+          TabContent() {
+            Column(){
+              Image($r('app.media.5_fengzhi_line_chart')).width(400)
+              Image($r('app.media.5_fengzhi_kmeans_figure')).width(400)
+              Image($r('app.media.5_fengzhi_initial_figure')).width(400)
+            }
+              .width('100%')
+              .height('100%')
+              .backgroundColor(Color.Gray)
+          }
+          .tabBar('峰值分类')
+
+          TabContent() {
+            Column(){
+              Image($r('app.media.5_jiguang_line_chart')).width(400)
+              Image($r('app.media.5_jiguang_kmeans_figure')).width(400)
+              Image($r('app.media.5_jiguang_initial_figure')).width(400)
+            }
+              .width('100%')
+              .height('100%')
+              .backgroundColor(Color.Gray)
+          }
+          .tabBar('企业分类')
+          TabContent() {
+            Column(){
+              Image($r('app.media.5juleichu_selection')).width(400)
+              Image($r('app.media.5juleijieguo1')).width(400)
+              Image($r('app.media.5juleijieguo2')).width(400)
+            }
+              .width('100%')
+              .height('100%')
+              .backgroundColor(Color.Gray)
+          }
+          .tabBar('用电特征聚类分析')
+          TabContent() {
             Column()
               .width('100%')
               .height('100%')
+              .backgroundColor(Color.Gray)
           }
-          .tabBar('分类1')
-          TabContent(){
+          .tabBar('用户分类')
+          TabContent() {
+            Column(){
+              Image($r('app.media.5two_user_bi')).width(400)
+              Image($r('app.media.5two_user_show')).width(400)
+            }
+              .width('100%')
+              .height('100%')
+              .backgroundColor(Color.Gray)
+          }
+          .tabBar('缴费行为分类')
+          TabContent() {
             Column()
               .width('100%')
               .height('100%')
+              .backgroundColor(Color.Gray)
           }
-          .tabBar('分类2')
-          TabContent(){
-            Column()
+          .tabBar('省份GDP电量关系')
+          TabContent() {
+            Column(){Image($r('app.media.5power')).width(400)}
               .width('100%')
               .height('100%')
+              .backgroundColor(Color.Gray)
           }
-          .tabBar('分类3')
-          TabContent(){
-            Column()
-              .width('100%')
-              .height('100%')
-          }
-          .tabBar('分类4')
+          .tabBar('能源分类')
         }
         .barMode(BarMode.Scrollable)
         .barWidth('100%')
@@ -53,8 +95,5 @@ struct UserTabs {
         .width('100%')
         .height('100%')
       }
-      .width('100%')
     }
-    .height('100%')
-  }
-}
+  }}

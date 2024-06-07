@@ -7,8 +7,6 @@ struct Page_14 {
   @State message: string = '分析-主界面'
   @State money:number = 0
   @State time:number = 0
-  params: any = router.getParams()
-  int_id:Number = parseInt(this.params.id)
 
   getPaymentStats() {
     const httpRequest = http.createHttp();
@@ -81,8 +79,7 @@ struct Page_14 {
             .margin({top:50})
             .onClick(()=>{
               router.pushUrl({
-                url:'pages/classification',
-                params: { id: this.int_id }
+                url:'pages/classification'
               },router.RouterMode.Single,
                 err => {
                   if(err){
@@ -113,7 +110,6 @@ struct Page_14 {
             .onClick(()=>{
               router.pushUrl({
                 url:'pages/Top5',
-                params: { id: this.int_id }
               },router.RouterMode.Single,
                 err => {
                   if(err){
