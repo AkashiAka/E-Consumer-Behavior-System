@@ -15,6 +15,17 @@ struct Index {
             .margin({top:10})
           Button('账号信息')
             .margin({top:10})
+            .onClick(()=>{
+              router.pushUrl({
+                url:'pages/info'
+              },router.RouterMode.Single,
+                err => {
+                  if(err){
+                    console.log('路由失败')
+                  }
+                }
+              )
+            })
         }
         .margin({top:50})
         Row() {
