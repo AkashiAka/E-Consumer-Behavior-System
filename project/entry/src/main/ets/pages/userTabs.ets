@@ -58,13 +58,6 @@ struct UserTabs {
           }
           .tabBar('用电特征聚类分析')
           TabContent() {
-            Column()
-              .width('100%')
-              .height('100%')
-              .backgroundColor(Color.Gray)
-          }
-          .tabBar('用户分类')
-          TabContent() {
             Column(){
               Image($r('app.media.5two_user_bi')).width(400)
               Image($r('app.media.5two_user_show')).width(400)
