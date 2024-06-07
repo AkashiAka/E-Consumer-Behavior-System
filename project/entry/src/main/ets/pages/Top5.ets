@@ -15,8 +15,6 @@ class customer {
 @Component
 struct Page_16 {
   @State message: string = 'TOP 5'
-  params: any = router.getParams()
-  int_id:Number = parseInt(this.params.id)
   @State private customers:Array<customer> = []
 
 
