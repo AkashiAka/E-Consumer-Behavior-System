@@ -9,7 +9,7 @@ const iconv = require('iconv-lite');
 const app = express();
 const port = 3000;
 const csvFilePath = 'E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析1.csv';
-
+const gdpElectricityCsvFilePath = 'E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task5/省份GDP电量关系/省份GDP电量关系.csv';
 // 初始化SQLite数据库连接
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -67,6 +67,7 @@ let paymentStats = {
 // 结构体来存储CSV文件内容
 let csv2Data = [];
 let csv3Data = [];
+let gdpElectricityData = [];
 
 // 读取CSV并存储平均缴费金额与平均缴费次数
 const readCSVAndCalculateStats = (filePath) => {
@@ -121,6 +122,10 @@ const readCSVFile = (filePath, storageArray, encoding) => {
 readCSVAndCalculateStats(csvFilePath);
 readCSVFile('E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析2.csv', csv2Data,'GBK');
 readCSVFile('E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析3.csv', csv3Data,'UTF-8');
+
+// 读取省份GDP电量关系的CSV文件
+readCSVFile(gdpElectricityCsvFilePath, gdpElectricityData, 'GBK');
+
 // API端点以返回计算的平均值
 app.get('/payment-stats', (req, res) => {
     res.json(paymentStats);
@@ -136,6 +141,10 @@ app.get('/csv3-data', (req, res) => {
     res.json(csv3Data);
 });
 
+// API端点以返回省份GDP电量关系的CSV数据
+app.get('/gdp-electricity-data', (req, res) => {
+    res.json(gdpElectricityData);
+});
 
 
 // 检查用户名是否存在
