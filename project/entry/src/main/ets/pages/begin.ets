@@ -30,7 +30,7 @@ struct begin {
             playMode:PlayMode.Normal
           })
 
-        Text('电死了吗')
+        Text('电了吗')
           .fontSize(40)
           .fontWeight(FontWeight.Bold)
           .margin({
