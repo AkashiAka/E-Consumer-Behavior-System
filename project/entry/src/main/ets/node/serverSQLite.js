@@ -8,8 +8,8 @@ const iconv = require('iconv-lite');
 
 const app = express();
 const port = 3000;
-const csvFilePath = 'E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析1.csv';
-const gdpElectricityCsvFilePath = 'E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task5/省份GDP电量关系/省份GDP电量关系.csv';
+const csvFilePath = 'E:/Huawei/Git/E-Consumer-Behavior-System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析1.csv';
+const gdpElectricityCsvFilePath = 'E:/Huawei/Git/E-Consumer-Behavior-System/project/Electricity_Consumer_Behavior/task5/省份GDP电量关系/省份GDP电量关系.csv';
 // 初始化SQLite数据库连接
 const sequelize = new Sequelize({
     dialect: 'sqlite',
@@ -109,6 +109,7 @@ const readCSVFile = (filePath, storageArray, encoding) => {
         .pipe(csv())
         .on('data', (row) => {
             storageArray.push(row);
+            //console.log(row)
         })
         .on('end', () => {
             console.log(`CSV file ${filePath} successfully processed`);
@@ -120,11 +121,11 @@ const readCSVFile = (filePath, storageArray, encoding) => {
 
 // 初始化数据读取
 readCSVAndCalculateStats(csvFilePath);
-readCSVFile('E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析2.csv', csv2Data,'GBK');
-readCSVFile('E:/E_Consumer_Behavior_System/E_Consumer_Behavior_System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析3.csv', csv3Data,'UTF-8');
+readCSVFile('E:/Huawei/Git/E-Consumer-Behavior-System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析2.csv', csv2Data,'GBK');
+readCSVFile('E:/Huawei/Git/E-Consumer-Behavior-System/project/Electricity_Consumer_Behavior/task123/居民客户的用电缴费习惯分析3.csv', csv3Data,'UTF-8');
 
 // 读取省份GDP电量关系的CSV文件
-readCSVFile(gdpElectricityCsvFilePath, gdpElectricityData, 'GBK');
+readCSVFile(gdpElectricityCsvFilePath, gdpElectricityData, 'UTF-8');
 
 // API端点以返回计算的平均值
 app.get('/payment-stats', (req, res) => {
