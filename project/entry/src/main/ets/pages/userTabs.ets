@@ -24,7 +24,8 @@ struct UserTabs {
 
         Tabs({ barPosition: BarPosition.Start, controller: this.controller }) {
           TabContent() {
-            Column(){Image($r('app.media.5_fengzhi_line_chart')).width(400)
+            Column(){
+              Image($r('app.media.5_fengzhi_line_chart')).width(400)
               Image($r('app.media.5_fengzhi_kmeans_figure')).width(400)
               Image($r('app.media.5_fengzhi_initial_figure')).width(400)
             }
@@ -35,14 +36,22 @@ struct UserTabs {
           .tabBar('峰值分类')
 
           TabContent() {
-            Column()
+            Column(){
+              Image($r('app.media.5_jiguang_line_chart')).width(400)
+              Image($r('app.media.5_jiguang_kmeans_figure')).width(400)
+              Image($r('app.media.5_jiguang_initial_figure')).width(400)
+            }
               .width('100%')
               .height('100%')
               .backgroundColor(Color.Gray)
           }
           .tabBar('企业分类')
           TabContent() {
-            Column()
+            Column(){
+              Image($r('app.media.5juleichu_selection')).width(400)
+              Image($r('app.media.5juleijieguo1')).width(400)
+              Image($r('app.media.5juleijieguo2')).width(400)
+            }
               .width('100%')
               .height('100%')
               .backgroundColor(Color.Gray)
@@ -56,7 +65,10 @@ struct UserTabs {
           }
           .tabBar('用户分类')
           TabContent() {
-            Column()
+            Column(){
+              Image($r('app.media.5two_user_bi')).width(400)
+              Image($r('app.media.5two_user_show')).width(400)
+            }
               .width('100%')
               .height('100%')
               .backgroundColor(Color.Gray)
@@ -70,7 +82,7 @@ struct UserTabs {
           }
           .tabBar('省份GDP电量关系')
           TabContent() {
-            Column()
+            Column(){Image($r('app.media.5power')).width(400)}
               .width('100%')
               .height('100%')
               .backgroundColor(Color.Gray)
