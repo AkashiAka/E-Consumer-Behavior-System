@@ -17,7 +17,42 @@ import http from '@ohos.net.http'
 struct Page_17 {
   @State message: string = '历史记录'
   @State private files:Array<file> = []
-
+  onLoadComplete(Tape:string) {
+    // 跳转到另一个页面
+    if (Tape==='居民用电分类') {
+      router.pushUrl({
+        url: 'pages/analysis'
+      }, router.RouterMode.Single,
+        err => {
+          if (err) {
+            console.log('路由失败');
+          }
+        }
+      )
+    }
+    else if(Tape==='企业用电分析'){
+      router.pushUrl({
+        url: 'pages/dispatch'
+      }, router.RouterMode.Single,
+        err => {
+          if (err) {
+            console.log('路由失败');
+          }
+        }
+      )
+    }
+    else{
+      router.pushUrl({
+        url: 'pages/userTabs'
+      }, router.RouterMode.Single,
+        err => {
+          if (err) {
+            console.log('路由失败');
+          }
+        }
+      )
+    }
+  }
   fetchOperationLogs() {
     const httpRequest = http.createHttp();
     console.log('Fetching operation logs...');
@@ -120,7 +155,12 @@ struct Page_17 {
                 Text('10-'+files.id)
                   .fontSize(20)
                   .fontWeight(FontWeight.Bold)
+                  .fontColor(Color.Blue)
                   .textAlign(TextAlign.Center)
+                  .onClick(()=>{
+                    const Type = files.type;
+                    this.onLoadComplete(Type)
+                  })
                   .width('25%')
                 Text(files.time)
                   .fontSize(20)
